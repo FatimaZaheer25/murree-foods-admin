@@ -10,8 +10,13 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
-    const backend = process.env.BACKEND_URL?.replace(/\/$/, "");
-    return backend ? [{ source: "/api/:path*", destination: `${backend}/api/:path*` }] : [];
+    const backend = (process.env.BACKEND_URL || "https://pandadoc-backend.onrender.com").replace(/\/$/, "");
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${backend}/api/:path*`,
+      },
+    ];
   },
 };
 
