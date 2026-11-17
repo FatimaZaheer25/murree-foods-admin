@@ -1,0 +1,5 @@
+@import "tailwindcss";
+/* Rang, fonts, dark mode: teeno apps ka mushtarka design */
+@import "../../shared/styles/theme.css";
+/* Tailwind shared ke components (BrandLogo, PanelShell...) ki classes bhi banaye */
+@source "../../shared";
