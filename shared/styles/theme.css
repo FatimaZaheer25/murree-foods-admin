@@ -1,0 +1,253 @@
+/* Teeno apps ka ek hi design: rang, fonts, dark mode. Har app ki globals.css pehle tailwind,
+   phir ye file import karti hai */
+@theme inline {
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+}
+
+@theme {
+  /* Forest green — buttons, footer, overlays */
+  --color-forest-950: #0a1f14;
+  --color-forest-900: #0f2e1d;
+  --color-forest-800: #1b4332;
+  --color-forest-700: #2d6a4f;
+  --color-forest-600: #40916c;
+  --color-forest-100: #d8e8df;
+  --color-forest-50: #eef5f1;
+
+  /* Cream — page and card backgrounds */
+  --color-cream-50: #fdfcfa;
+  --color-cream-100: #f7f3eb;
+  --color-cream-200: #efe8dc;
+  --color-cream-300: #e2d6c4;
+
+  /* Charcoal — text */
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-600: #3d3d3d;
+  --color-charcoal-400: #6b6b6b;
+  --color-charcoal-300: #9a9a9a;
+
+  /* Accent orange */
+  --color-accent: #c45c26;
+  --color-accent-soft: #e8a87c;
+  --color-gold: #c9a227;
+  --color-logo: #0f2e1d;
+
+  --shadow-soft: 0 4px 24px #0f2e1d0f;
+  --shadow-lift: 0 12px 40px #0f2e1d1f;
+
+  --animate-fade-up: fade-up 0.55s ease-out both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Dark mode: <html class="dark"> par sirf rang badalte hain. Saari classes (bg-cream-50,
+   text-charcoal...) inhi variables se banti hain, is liye har page khud badal jata hai */
+html.dark {
+  color-scheme: dark;
+  --color-cream-50: #121614;
+  --color-cream-100: #1a1f1c;
+  --color-cream-200: #2a322e;
+  --color-cream-300: #3d4640;
+
+  --color-charcoal: #f2f0eb;
+  --color-charcoal-600: #d8d4cc;
+  --color-charcoal-400: #a8a49c;
+  --color-charcoal-300: #7e7a72;
+
+  --color-forest-950: #07140e;
+  --color-forest-900: #0c1f16;
+  --color-forest-800: #1b4332;
+  --color-forest-700: #3d8f68;
+  --color-forest-600: #52a87c;
+  --color-forest-100: #2a4034;
+  --color-forest-50: #1c2e25;
+
+  --color-accent: #d4783f;
+  --color-accent-soft: #e8a87c;
+  --color-logo: #eef5f1;
+
+  --shadow-soft: 0 4px 24px #00000059;
+  --shadow-lift: 0 12px 40px #00000080;
+
+  /* Safed cards ka dark rang */
+  --card: #1c221f;
+}
+
+/* Layer ke bahar hain, is liye Tailwind ki classes par bhari hain */
+html.dark :where(.bg-white) {
+  background-color: var(--card);
+}
+html.dark :where(.bg-white\/95) {
+  background-color: color-mix(in oklab, var(--card) 95%, transparent);
+}
+html.dark :where(.bg-white\/90) {
+  background-color: color-mix(in oklab, var(--card) 90%, transparent);
+}
+html.dark :where(.hover\:bg-white:hover) {
+  background-color: var(--card);
+}
+
+/* Status pills (Delivered, Preparing...): halka rang, roshan text */
+html.dark :where(.bg-emerald-50) {
+  background-color: #064e3b59;
+}
+html.dark :where(.text-emerald-700) {
+  color: #6ee7b7;
+}
+html.dark :where(.bg-amber-50) {
+  background-color: #78350f59;
+}
+html.dark :where(.text-amber-800) {
+  color: #fcd34d;
+}
+html.dark :where(.bg-sky-50) {
+  background-color: #0c4a6e59;
+}
+html.dark :where(.text-sky-700, .text-sky-800) {
+  color: #7dd3fc;
+}
+html.dark :where(.bg-violet-50) {
+  background-color: #4c1d9559;
+}
+html.dark :where(.text-violet-700) {
+  color: #c4b5fd;
+}
+html.dark :where(.bg-red-50) {
+  background-color: #7f1d1d59;
+}
+html.dark :where(.text-red-600, .text-red-700) {
+  color: #fca5a5;
+}
+
+/* Gehra hara text (qeemat, active link, badges) dark background par gum ho jata tha
+   (sir ke design mein bhi): dark mein roshan hara. Buttons ka bg-forest-800 waisa hi rehta hai */
+html.dark :where(.text-forest-800, .text-forest-900) {
+  color: var(--color-forest-600);
+}
+
+html.dark ::selection {
+  background-color: var(--color-forest-100);
+  color: var(--color-charcoal);
+}
+
+/* Halka pine-tree pattern (Categories section) */
+@utility pine-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 8 L38 24 L34 24 L42 38 L36 38 L44 52 L16 52 L24 38 L18 38 L26 24 L22 24 Z' fill='%231b4332' fill-opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Dark mein ped halke roshan */
+html.dark :where(.pine-pattern) {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 8 L38 24 L34 24 L42 38 L36 38 L44 52 L16 52 L24 38 L18 38 L26 24 L22 24 Z' fill='%23eef5f1' fill-opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Design ki tarah: form fields body ka font (16px) lein. Layer ke bahar hai,
+   is liye text-sm jaisi classes par bhi bhari hai (iPhone par zoom bhi nahi hota) */
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Patla scrollbar (mobile par categories ki horizontal scroll) */
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-cream-300);
+    border-radius: 999px;
+  }
+}
+
+/* Scrollbar sirf mouse upar ho tab nazar aaye (menu ka sidebar).
+   Chaurai dono haalat mein thin hi rehti hai, sirf rang badalta hai, is liye layout nahi hilta */
+@utility hover-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+
+  &:hover {
+    scrollbar-color: color-mix(in oklab, var(--color-forest-600) 50%, transparent) transparent;
+  }
+
+  /* Purana Chrome aur Safari (jo scrollbar-color nahi samajhte) */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 999px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--color-forest-600) 50%, transparent);
+  }
+}
+
+/* Admin/Rider ka gehra sidebar: wahi hover-scrollbar, lekin halka (safed) rang.
+   Mouse sidebar par ho tabhi nazar aata hai; chaurai hamesha patli, is liye kuch nahi hilta */
+@utility sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+
+  &:hover {
+    scrollbar-color: rgb(255 255 255 / 0.25) transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 999px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background: rgb(255 255 255 / 0.25);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    /* Har jagah patla, theme ke rang ka scrollbar (Windows ka mota sleti scrollbar teeron wala nahi):
+       page, popups (Order, Add Dish), lists. Rang khud dark mode ke saath badalta hai */
+    scrollbar-color: var(--color-charcoal-300) transparent;
+  }
+
+  * {
+    scrollbar-width: thin;
+  }
+
+  body {
+    background-color: var(--color-cream-50);
+    color: var(--color-charcoal);
+    overflow-x: clip;
+  }
+
+  /* Design ki tarah har h1, h2, h3 Fraunces mein (font-display class ke bina bhi) */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-fraunces), Georgia, serif;
+  }
+}

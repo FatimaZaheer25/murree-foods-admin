@@ -1,0 +1,14 @@
+{
+  "name": "@murree/shared",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Code shared by the MurreeFoods website, admin panel and rider panel",
+  "peerDependencies": {
+    "lucide-react": "*",
+    "next": "*",
+    "react": "*"
+  },
+  "scripts": {
+    "lint": "eslint"
+  }
+}

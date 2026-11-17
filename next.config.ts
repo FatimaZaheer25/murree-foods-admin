@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
   env: { NEXT_PUBLIC_MF_APP: "admin" },
   devIndicators: { position: "bottom-right" },
   images: {
